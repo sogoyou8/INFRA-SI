@@ -1,0 +1,351 @@
+=== CONFIGURATIONS SWITCHES ===
+Date: 08/06/2025
+Équipe: Yoann SOGOYOU, Matthias POLLET, Jennie BEYTHON NKWEDJAN
+
+================================================================================
+=== SW1 (RÉSEAU INTERNE - VLAN 10) ===
+================================================================================
+
+Building configuration...
+
+Current configuration : 1238 bytes
+!
+version 15.0
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname SW1
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+ switchport trunk allowed vlan 1,10
+ switchport mode trunk
+!
+interface FastEthernet0/2
+ switchport access vlan 10
+ switchport mode access
+!
+interface FastEthernet0/3
+ switchport access vlan 10
+ switchport mode access
+!
+interface FastEthernet0/4
+!
+interface FastEthernet0/5
+!
+interface FastEthernet0/6
+!
+interface FastEthernet0/7
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/9
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+interface FastEthernet0/12
+!
+interface FastEthernet0/13
+!
+interface FastEthernet0/14
+!
+interface FastEthernet0/15
+!
+interface FastEthernet0/16
+!
+interface FastEthernet0/17
+!
+interface FastEthernet0/18
+!
+interface FastEthernet0/19
+!
+interface FastEthernet0/20
+!
+interface FastEthernet0/21
+!
+interface FastEthernet0/22
+!
+interface FastEthernet0/23
+!
+interface FastEthernet0/24
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+!
+!
+!
+line con 0
+!
+line vty 0 4
+ login
+line vty 5 15
+ login
+!
+!
+!
+!
+end
+
+--- SW1 VLAN STATUS ---
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/4-24, Gig0/1-2
+10   Interne                          active    Fa0/2, Fa0/3
+
+--- SW1 INTERFACES STATUS ---
+Fa0/1: TRUNK (connected) - Liaison vers R1
+Fa0/2: ACCESS VLAN 10 (connected) - PC_SEC_1
+Fa0/3: ACCESS VLAN 10 (connected) - PC_SEC_2
+
+================================================================================
+=== SW2 (RÉSEAU EXTERNE - VLAN 30) ===
+================================================================================
+
+Building configuration...
+
+Current configuration : 1187 bytes
+!
+version 15.0
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname SW2
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+ switchport trunk allowed vlan 1,30
+ switchport mode trunk
+!
+interface FastEthernet0/2
+ switchport access vlan 30
+ switchport mode access
+!
+interface FastEthernet0/3
+!
+interface FastEthernet0/4
+!
+interface FastEthernet0/5
+!
+interface FastEthernet0/6
+!
+interface FastEthernet0/7
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/9
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+interface FastEthernet0/12
+!
+interface FastEthernet0/13
+!
+interface FastEthernet0/14
+!
+interface FastEthernet0/15
+!
+interface FastEthernet0/16
+!
+interface FastEthernet0/17
+!
+interface FastEthernet0/18
+!
+interface FastEthernet0/19
+!
+interface FastEthernet0/20
+!
+interface FastEthernet0/21
+!
+interface FastEthernet0/22
+!
+interface FastEthernet0/23
+!
+interface FastEthernet0/24
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+!
+!
+!
+line con 0
+!
+line vty 0 4
+ login
+line vty 5 15
+ login
+!
+!
+!
+!
+end
+
+--- SW2 VLAN STATUS ---
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/3-24, Gig0/1-2
+30   Externe                          active    Fa0/2
+
+--- SW2 INTERFACES STATUS ---
+Fa0/1: TRUNK (connected) - Liaison vers R1
+Fa0/2: ACCESS VLAN 30 (connected) - PC_NONSEC_1
+
+================================================================================
+=== SW_DMZ (ZONE DMZ - VLAN 20) ===
+================================================================================
+
+Building configuration...
+
+Current configuration : 1241 bytes
+!
+version 15.0
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname SW_DMZ
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+ switchport trunk allowed vlan 1,20
+ switchport mode trunk
+!
+interface FastEthernet0/2
+ switchport access vlan 20
+ switchport mode access
+!
+interface FastEthernet0/3
+ switchport access vlan 20
+ switchport mode access
+!
+interface FastEthernet0/4
+!
+interface FastEthernet0/5
+!
+interface FastEthernet0/6
+!
+interface FastEthernet0/7
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/9
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+interface FastEthernet0/12
+!
+interface FastEthernet0/13
+!
+interface FastEthernet0/14
+!
+interface FastEthernet0/15
+!
+interface FastEthernet0/16
+!
+interface FastEthernet0/17
+!
+interface FastEthernet0/18
+!
+interface FastEthernet0/19
+!
+interface FastEthernet0/20
+!
+interface FastEthernet0/21
+!
+interface FastEthernet0/22
+!
+interface FastEthernet0/23
+!
+interface FastEthernet0/24
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+!
+!
+!
+line con 0
+!
+line vty 0 4
+ login
+line vty 5 15
+ login
+!
+!
+!
+!
+end
+
+--- SW_DMZ VLAN STATUS ---
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/4-24, Gig0/1-2
+20   DMZ                              active    Fa0/2, Fa0/3
+
+--- SW_DMZ INTERFACES STATUS ---
+Fa0/1: TRUNK (connected) - Liaison vers FW1
+Fa0/2: ACCESS VLAN 20 (connected) - SRV_WEB
+Fa0/3: ACCESS VLAN 20 (connected) - SRV_DNS
+
+================================================================================
+=== RÉSUMÉ CONFIGURATION SWITCHES ===
+================================================================================
+
+SW1 (Interne):
+• VLAN 10 "Interne" - Ports Fa0/2-3 (PC_SEC_1, PC_SEC_2)
+• Trunk Fa0/1 vers R1 (VLANs 1,10)
+
+SW2 (Externe):
+• VLAN 30 "Externe" - Port Fa0/2 (PC_NONSEC_1)
+• Trunk Fa0/1 vers R1 (VLANs 1,30)
+
+SW_DMZ (Zone DMZ):
+• VLAN 20 "DMZ" - Ports Fa0/2-3 (SRV_WEB, SRV_DNS)
+• Trunk Fa0/1 vers FW1 (VLANs 1,20)
+
+STATUT GLOBAL: ✅ TOUTES LES CONFIGURATIONS OPTIMALES

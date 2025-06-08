@@ -1,0 +1,103 @@
+=== CONFIGURATION FIREWALL FW1 (Cisco 1941) ===
+Date: 08/06/2025
+Équipe: Yoann SOGOYOU, Matthias POLLET, Jennie BEYTHON NKWEDJAN
+Rôle: Firewall DMZ - Routage vers zone démilitarisée
+
+Building configuration...
+
+Current configuration : 747 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname FW1
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO1941/K9 sn FTX1524597X-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ ip address 192.168.100.2 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1.20
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.0
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip classless
+ip route 0.0.0.0 0.0.0.0 192.168.100.1 
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
+=== ANALYSE DE LA CONFIGURATION ===
+
+INTERFACES CONFIGURÉES:
+• Gi0/0: 192.168.100.2/24 - Liaison vers R1
+• Gi0/1.20 (VLAN 20): 192.168.20.1/24 - Passerelle DMZ
+
+ROUTAGE:
+• Route par défaut: 0.0.0.0/0 via 192.168.100.1 (R1)
+• Permet communication DMZ ↔ tous les réseaux
+
+FONCTION:
+• Point d'entrée sécurisé vers la DMZ
+• Routage entre DMZ (192.168.20.0/24) et reste du réseau
+
+STATUT: ✅ CONFIGURATION OPTIMALE

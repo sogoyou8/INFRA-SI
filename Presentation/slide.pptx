@@ -1,0 +1,194 @@
+SLIDE 1 : PAGE DE GARDE 🏠
+
+🌐 ARCHITECTURE RÉSEAU D'ENTREPRISE
+Infrastructure & Système d'Information
+
+👥 ÉQUIPE PROJET :
+• Yoann SOGOYOU
+• Matthias POLLET  
+• Jennie BEYTHON NKWEDJAN
+
+📚 Bachelor 2 Informatique - Ynov Campus
+📅 Juin 2025 | 👨‍🏫 Encadrant : Ilyes STAILI
+
+
+SLIDE 2 : OBJECTIFS ET CONTEXTE 🎯
+
+🎯 MISSION : Déployer une architecture réseau d'entreprise sécurisée
+
+✅ OBJECTIFS TECHNIQUES :
+• Segmentation réseau avec VLANs
+• Zone démilitarisée (DMZ) pour serveurs
+• Services d'infrastructure (DHCP, DNS, HTTP)
+• Règles de sécurité et routage inter-VLAN
+
+🏆 CHALLENGE :
+• Difficulté 2/3
+• Architecture complète et fonctionnelle
+• 10 équipements à configurer
+• 3 zones distinctes à interconnecter
+
+
+SLIDE 3 : ARCHITECTURE DÉPLOYÉE 🏗️
+
+[INSÉRER TON SCHÉMA RÉSEAU ICI]
+
+🏗️ TOPOLOGIE EN ÉTOILE :
+• R1 (Cisco 2911) : Routeur central
+• FW1 (Cisco 1941) : Firewall DMZ
+• 3 Switches (Cisco 2960-24TT)
+• 3 PCs clients (interne/externe)
+• 2 Serveurs DMZ (Web/DNS)
+
+🔗 CONNECTIVITÉ :
+• 9 liaisons physiques
+• 3 VLANs segmentés
+• 1 liaison inter-routeur
+
+
+SLIDE 4 : PLAN D'ADRESSAGE 🔢
+📊 SEGMENTATION RÉSEAU :
+
+┌─────────────────────────────────────────────────┐
+│ VLAN 10 - INTERNE (Sécurisé)                   │
+│ 📍 192.168.10.0/24                             │
+│ 🚪 Passerelle : 192.168.10.1                   │
+│ 💻 PC_SEC_1, PC_SEC_2 (DHCP)                   │
+└─────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────┐
+│ VLAN 20 - DMZ (Zone démilitarisée)             │
+│ 📍 192.168.20.0/24                             │
+│ 🚪 Passerelle : 192.168.20.1                   │
+│ 🌐 SRV_WEB (.10), SRV_DNS (.11)                │
+└─────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────┐
+│ VLAN 30 - EXTERNE (Non sécurisé)               │
+│ 📍 192.168.30.0/24                             │
+│ 🚪 Passerelle : 192.168.30.1                   │
+│ 💻 PC_NONSEC_1 (DHCP)                          │
+└─────────────────────────────────────────────────┘
+
+
+SLIDE 5 : SERVICES DÉPLOYÉS ⚙️
+
+🔧 SERVICES D'INFRASTRUCTURE ACTIFS :
+
+🏠 DHCP (R1) :
+• Distribution automatique IP VLAN 10 & 30
+• DNS intégré : 192.168.20.11
+• Plages : .11-.254 (exclusions .1-.10)
+
+🌐 DNS (SRV_DNS) :
+• web.ynov.local → 192.168.20.10
+• dns.ynov.local → 192.168.20.11  
+• serveur.ynov.local → 192.168.20.10
+
+📄 HTTP (SRV_WEB) :
+• Page d'accueil moderne et responsive
+• Informations projet intégrées
+• Accessible via IP et nom de domaine
+
+🔀 ROUTAGE :
+• Inter-VLAN parfaitement fonctionnel
+• Accès DMZ depuis toutes les zones
+
+
+SLIDE 6 : DÉMONSTRATION LIVE 🧪
+
+🎬 TESTS EN TEMPS RÉEL :
+
+1️⃣ CONNECTIVITÉ DHCP :
+   PC_SEC_1 → ipconfig
+   ✅ IP automatique : 192.168.10.11
+
+2️⃣ ROUTAGE INTER-VLAN :
+   PC_SEC_1 → ping 192.168.20.10
+   ✅ 0% perte, <1ms
+
+3️⃣ RÉSOLUTION DNS :
+   PC_SEC_1 → nslookup web.ynov.local
+   ✅ Résolu : 192.168.20.10
+
+4️⃣ ACCÈS WEB :
+   Browser → http://web.ynov.local
+   ✅ Page moderne affichée
+
+📊 RÉSULTAT : 100% DE RÉUSSITE
+
+
+SLIDE 7 : RÉSULTATS ET MÉTRIQUES 📊
+
+🏆 VALIDATION COMPLÈTE :
+
+📈 PERFORMANCE :
+• Latence inter-VLAN : <1ms
+• Perte de paquets : 0%
+• Temps résolution DNS : <1s
+• Disponibilité services : 100%
+
+✅ CONFORMITÉ TECHNIQUE :
+• 10/10 équipements configurés
+• 3/3 VLANs fonctionnels
+• 4/4 services opérationnels
+• 100% tests validés
+
+🔧 TROUBLESHOOTING :
+• Problèmes ACL résolus
+• Architecture stable
+• Communication parfaite entre zones
+
+💼 VALEUR MÉTIER :
+• Architecture d'entreprise réaliste
+• Sécurité par segmentation
+• Haute disponibilité
+
+
+SLIDE 8 : COMPÉTENCES ET CONCLUSION 🎓
+
+🎯 COMPÉTENCES ACQUISES :
+
+🔧 TECHNIQUES :
+• Configuration équipements Cisco
+• Services réseau (DHCP, DNS, HTTP)
+• Architecture DMZ et VLANs
+• Troubleshooting avancé
+
+📋 MÉTHODOLOGIQUES :
+• Gestion de projet en équipe
+• Documentation technique
+• Tests de validation
+• Présentation professionnelle
+
+🏆 BILAN PROJET :
+✅ Objectifs 100% atteints
+✅ Architecture fonctionnelle
+✅ Documentation exemplaire
+✅ Équipe performante
+
+🚀 PERSPECTIVES :
+• Base solide pour projets réseau
+• Compréhension architecture entreprise
+• Maîtrise outils professionnels
+
+
+
+
+
+📋 PRÉSENTATION (20 minutes)
+INTRODUCTION (2 min) :
+"Bonjour, nous sommes Yoann, Matthias et Jennie. Nous allons vous présenter notre architecture réseau d'entreprise déployée dans le cadre du module Infrastructure."
+
+ARCHITECTURE (5 min) :
+"Notre mission était de créer une architecture sécurisée avec 3 zones distinctes..." (montrer schéma)
+
+DÉMONSTRATION LIVE (8 min) :
+"Passons maintenant aux tests en direct..." (ouvrir Packet Tracer et démontrer)
+
+BILAN TECHNIQUE (3 min) :
+"Nos résultats montrent une réussite à 100%..." (métriques)
+
+QUESTIONS (2 min) :
+"Nous sommes maintenant disponibles pour vos questions."
+

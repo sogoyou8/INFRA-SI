@@ -1,0 +1,42 @@
+🎤 PRÉSENTATION DU PROJET
+
+🎯 À QUOI SERT CE PROJET ?
+
+Ce projet simule le déploiement d'une infrastructure réseau complète pour une entreprise, permettant d'acquérir les compétences essentielles d'un administrateur réseau.
+
+COMPÉTENCES DÉVELOPPÉES :
+-🔧 Configuration d'équipements Cisco (routeurs, switches, serveurs)
+-🏗️ Conception d'architecture réseau sécurisée et segmentée
+-⚙️ Déploiement de services d'infrastructure (DHCP, DNS, HTTP)
+-🔐 Mise en place de zones sécurisées (DMZ, VLANs)
+-📋 Documentation technique professionnelle
+-🧪 Tests et validation d'architecture
+
+🏗️ COMMENT FONCTIONNE L'ARCHITECTURE ?
+PRINCIPE GÉNÉRAL :
+L'architecture simule une entreprise avec 3 zones distinctes :
+
+Zone interne (employés sécurisés)
+Zone externe (visiteurs/partenaires)
+Zone DMZ (serveurs accessibles depuis partout)
+
+- Chaque VLAN = réseau isolé avec ses propres règles de sécurité
+VLAN 10 (INTERNE)     VLAN 20 (DMZ)        VLAN 30 (EXTERNE)
+├── PC_SEC_1          ├── SRV_WEB          ├── PC_NONSEC_1
+├── PC_SEC_2          └── SRV_DNS          └── (Visiteurs)
+└── (Employés)        └── (Serveurs)       
+
+- R1 interconnecte tous les VLANs et gère le DHCP
+R1 (Routeur Central)
+├── Interface 0/0.10 → VLAN 10 (192.168.10.1)
+├── Interface 0/1.30 → VLAN 30 (192.168.30.1)  
+└── Interface 0/2 → FW1 (192.168.100.1)
+
+- FW1 protège la DMZ tout en permettant l'accès depuis tous les VLANs
+FW1 (Firewall)
+├── Interface 0/0 → R1 (192.168.100.2)
+└── Interface 0/1.20 → DMZ (192.168.20.1)
+
+📚 Formation : Bachelor 2 Informatique - Ynov Campus
+👨‍🏫 Encadrant : Ilyes STAILI
+📅 Juin 2025

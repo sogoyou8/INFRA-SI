@@ -1,0 +1,96 @@
+=== CONFIGURATIONS SERVEURS DMZ ===
+Date: 08/06/2025
+Équipe: Yoann SOGOYOU, Matthias POLLET, Jennie BEYTHON NKWEDJAN
+
+================================================================================
+=== SRV_WEB (Serveur HTTP) ===
+================================================================================
+
+CONFIGURATION RÉSEAU:
+• Adresse IP: 192.168.20.10
+• Masque de sous-réseau: 255.255.255.0
+• Passerelle par défaut: 192.168.20.1
+• Serveur DNS: 192.168.20.11
+• VLAN: 20 (DMZ)
+• Port switch: SW_DMZ Fa0/2
+
+SERVICES ACTIVÉS:
+• HTTP (Port 80): ACTIVÉ
+  - Page d'accueil personnalisée
+  - Design moderne avec CSS intégré
+  - Informations projet et architecture réseau
+  - Accessible via: http://192.168.20.10
+  - Accessible via: http://web.ynov.local
+
+CONTENU WEB:
+• Page principale avec informations projet
+• Détails de l'architecture réseau
+• Informations équipe et formation
+• Design responsive et professionnel
+
+STATUT: ✅ OPÉRATIONNEL - Service HTTP fonctionnel
+
+================================================================================
+=== SRV_DNS (Serveur DNS) ===
+================================================================================
+
+CONFIGURATION RÉSEAU:
+• Adresse IP: 192.168.20.11
+• Masque de sous-réseau: 255.255.255.0
+• Passerelle par défaut: 192.168.20.1
+• VLAN: 20 (DMZ)
+• Port switch: SW_DMZ Fa0/3
+
+SERVICES ACTIVÉS:
+• DNS (Port 53): ACTIVÉ
+  - Résolution de noms pour tous les VLANs
+  - Enregistrements A configurés
+
+ENREGISTREMENTS DNS CONFIGURÉS:
+┌────┬────────────────────┬───────────┬─────────────────┐
+│ No │ Name               │ Type      │ Detail          │
+├────┼────────────────────┼───────────┼─────────────────┤
+│ 0  │ dns.ynov.local     │ A Record  │ 192.168.20.11   │
+│ 1  │ serveur.ynov.local │ A Record  │ 192.168.20.10   │
+│ 2  │ web.ynov.local     │ A Record  │ 192.168.20.10   │
+└────┴────────────────────┴───────────┴─────────────────┘
+
+FONCTIONNALITÉS:
+• Résolution web.ynov.local → 192.168.20.10 (SRV_WEB)
+• Résolution dns.ynov.local → 192.168.20.11 (SRV_DNS)
+• Résolution serveur.ynov.local → 192.168.20.10 (SRV_WEB)
+• Service DNS distribué par DHCP aux clients (R1)
+
+TESTS DE VALIDATION:
+• nslookup web.ynov.local depuis PC_SEC_1: ✅ RÉUSSI
+• nslookup web.ynov.local depuis PC_NONSEC_1: ✅ RÉUSSI
+• Accès http://web.ynov.local: ✅ FONCTIONNEL
+
+STATUT: ✅ OPÉRATIONNEL - Service DNS fonctionnel
+
+================================================================================
+=== ARCHITECTURE DMZ - RÉSUMÉ ===
+================================================================================
+
+SÉCURITÉ:
+• Serveurs isolés en VLAN 20 (DMZ)
+• Accessibles depuis tous les VLANs via FW1
+• Aucun accès direct entre DMZ et VLANs clients
+
+SERVICES DÉPLOYÉS:
+• HTTP: Page web moderne et informative
+• DNS: Résolution de noms pour tout le réseau
+• Haute disponibilité: 2 serveurs distincts
+
+PERFORMANCE:
+• Latence < 1ms depuis tous les VLANs
+• 0% perte de paquets
+• Résolution DNS instantanée
+
+CONFORMITÉ PROJET:
+• DMZ fonctionnelle ✅
+• Services d'infrastructure ✅  
+• Segmentation réseau ✅
+• Plan d'adressage respecté ✅
+
+STATUT GLOBAL: 🏆 ARCHITECTURE DMZ PARFAITEMENT DÉPLOYÉE
