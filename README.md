@@ -44,17 +44,17 @@ Concevoir et déployer une **architecture réseau d'entreprise sécurisée** int
 
 ### Topologie réseau :
 ```
-                    [ARCHITECTURE RÉSEAU D'ENTREPRISE]
-                              |
-                          [R1 - 2911] ← Routeur central DHCP
-                         /      |      \
-                    [SW1]    [SW2]    [FW1 - 1941] ← Firewall DMZ
-                   /    \      |          |
-          [PC_SEC_1] [PC_SEC_2] [PC_NONSEC_1] [SW_DMZ]
-           VLAN 10   VLAN 10    VLAN 30     /        \
-                                     [SRV_WEB]    [SRV_DNS]
-                                      VLAN 20      VLAN 20
-                                        DMZ          DMZ
+                         [ARCHITECTURE RÉSEAU D'ENTREPRISE]
+                                 |
+                            [R1 - 2911] ← Routeur central DHCP
+                         /         |         \
+                    [SW1]         [SW2]    [FW1 - 1941] ← Firewall DMZ
+                   /    \            |            |
+          [PC_SEC_1] [PC_SEC_2] [PC_NONSEC_1]   [SW_DMZ]
+           VLAN 10   VLAN 10    VLAN 30        /        \
+                                          [SRV_WEB]    [SRV_DNS]
+                                           VLAN 20      VLAN 20
+                                             DMZ          DMZ
 ```
 
 ### Équipements déployés :
